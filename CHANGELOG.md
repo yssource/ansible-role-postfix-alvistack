@@ -1,7 +1,7 @@
 Ansible Role for Postfix
 ========================
 
-1.1.0 - TBC
+1.2.0 - TBC
 -----------
 
 -   Ininitial release for Ansible 2.4
