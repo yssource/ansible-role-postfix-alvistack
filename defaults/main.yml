@@ -13,3 +13,40 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# The network interface addresses that this mail system receives mail on.
+postfix_inet_interfaces: "all"
+
+# The Internet protocols Postfix will attempt to use when making or accepting
+# connections.
+postfix_inet_protocols: "all"
+
+# The list of domains that are delivered via the $local_transport mail delivery
+# transport.
+postfix_mydestination: "$myhostname, localhost.$mydomain, localhost"
+
+# The list of "trusted" remote SMTP clients that have more privileges than
+# "strangers".
+postfix_mynetworks: "127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128"
+
+# The next-hop destination of non-local mail; overrides non-local domains in
+# recipient addresses.
+postfix_relayhost: ""
+
+# The maximal size of any local(8) individual mailbox or maildir file, or zero
+# (no limit).
+postfix_mailbox_size_limit: "0"
+
+# The set of characters that can separate a user name from its extension
+# (example: user+foo), or a .forward file name from its extension (example:
+# .forward+foo).
+postfix_recipient_delimiter: "+"
+
+# The default mail delivery transport and next-hop destination for destinations
+# that do not match $mydestination, $inet_interfaces, $proxy_interfaces,
+# $virtual_alias_domains, $virtual_mailbox_domains, or $relay_domains.
+postfix_default_transport: "smtp"
+
+# The default mail delivery transport and next-hop destination for remote
+# delivery to domains listed with $relay_domains.
+postfix_relay_transport: "smtp"
