@@ -8,7 +8,7 @@
 # is /etc/mailname.
 myorigin = /etc/mailname
 
-smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
+smtpd_banner = $myhostname ESMTP $mail_name ({{ ansible_distribution }})
 biff = no
 
 # appending .domain is the MUA's job.
