@@ -18,28 +18,9 @@
   yum:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  with_items: "{{ _yum }}"
-  tags: postfix
-
-- name: yum -y clean all
-  shell: |
-    yum -y clean all
-  changed_when: false
-  tags: postfix
-
-- name: symlink /etc/ssl/private
-  file:
-    src: "../pki/tls/private"
-    dest: "/etc/ssl/private"
-    state: "link"
-  tags: postfix
-
-- name: create /etc/ssl/certs/ssl-cert-snakeoil.pem
-  shell: |
-    openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
-      -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{ ansible_fqdn }}" \
-      -keyout /etc/ssl/private/ssl-cert-snakeoil.key \
-      -out /etc/ssl/certs/ssl-cert-snakeoil.pem
-  args:
-    creates: "/etc/ssl/private/ssl-cert-snakeoil.key"
+  loop: "{{ _yum }}"
+  register: result
+  until: result is succeeded
+  notify:
+    - postfix | systemctl restart postfix
   tags: postfix

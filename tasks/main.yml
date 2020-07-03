@@ -14,59 +14,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- name: include default variables
+  include_vars: "../vars/main.yml"
+  tags: postfix
+
 - name: include release specific variables
-  include_vars: "{{ loop_var }}"
-  with_first_found:
-    - files:
+  include_vars: "{{ lookup('first_found', _params) }}"
+  vars:
+    _params:
+      files:
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
-      paths: "../vars"
-      skip: "yes"
-  loop_control:
-    loop_var: "loop_var"
+      paths:
+        - "../vars"
+  ignore_errors: true
   tags: postfix
 
 - name: include release specific tasks
-  include_tasks: "{{ loop_var }}"
-  with_first_found:
-    - files:
+  include_tasks: "{{ lookup('first_found', _params) }}"
+  vars:
+    _params:
+      files:
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
         - "{{ ansible_distribution | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
-      paths: "."
-      skip: "yes"
-  loop_control:
-    loop_var: "loop_var"
+      paths:
+        - "."
+  ignore_errors: true
   tags: postfix
 
-- name: create /etc/mailname
-  copy:
-    content: "{{ ansible_fqdn }}"
-    dest: "/etc/mailname"
-    owner: "root"
-    group: "root"
-    mode: "0644"
-    force: "no"
-  tags: postfix
-
-- name: copy templates
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner }}"
-    group: "{{ item.group }}"
-    mode: "{{ item.mode }}"
-  with_items:
-    - { src: "etc/postfix/main.cf.j2", dest: "/etc/postfix/main.cf", owner: "root", group: "root", mode: "0644" }
-  tags: postfix
-
-- name: enable service
+- name: systemctl start postfix
   service:
     name: "postfix"
-    enabled: "yes"
+    state: "started"
+    enabled: true
+  changed_when: false
+  ignore_errors: true
+  tags: postfix
+
+- name: flush handlers
+  meta: flush_handlers
   tags: postfix

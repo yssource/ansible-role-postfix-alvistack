@@ -1,16 +1,22 @@
-Ansible Role for Postfix
-========================
+# Ansible Role for Postfix
 
-1.2.0 - TBC
------------
+## 4.5.0 - TBC
 
 ### Major Changes
 
--   Add Ubuntu 17.10 and 18.04 support
+## 4.4.0 - 2020-07-03
 
-1.1.0 - 2017-11-30
-------------------
+### Major Changes
 
--   Ininitial release for Ansible 2.4
--   Support both Ubuntu 16.04/14.04 or RHEL/CentOS 7/6
+  - Upgrade for Ansible 2.9 or higher
+  - Upgrade for:
+      - Ubuntu 18.04/19.10/20.04
+      - RHEL/CentOS 7/8
+      - openSUSE Leap 15.1
+      - Debian 10
+      - Fedora 32
 
+## 1.1.0 - 2017-11-30
+
+  - Ininitial release for Ansible 2.4
+  - Support both Ubuntu 16.04/14.04 or RHEL/CentOS 7/6
