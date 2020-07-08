@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Remove Ubuntu 19.10 support
+
 ## 4.4.0 - 2020-07-03
 
 ### Major Changes
