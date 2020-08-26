@@ -22,5 +22,5 @@
   register: result
   until: result is succeeded
   notify:
-    - postfix | systemctl restart postfix
+    - postfix | systemctl restart postfix.service
   tags: postfix
