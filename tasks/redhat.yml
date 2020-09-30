@@ -23,4 +23,3 @@
   until: result is succeeded
   notify:
     - postfix | systemctl restart postfix.service
-  tags: postfix
