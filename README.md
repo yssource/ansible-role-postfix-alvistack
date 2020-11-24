@@ -1,6 +1,6 @@
 # Ansible Role for Postfix
 
-[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-postfix.svg)](https://travis-ci.com/alvistack/ansible-role-postfix)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-postfix/master)](https://gitlab.com/alvistack/ansible-role-postfix/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-postfix.svg)](https://github.com/alvistack/ansible-role-postfix/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-postfix.svg)](https://github.com/alvistack/ansible-role-postfix/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.postfix-blue.svg)](https://galaxy.ansible.com/alvistack/postfix)
