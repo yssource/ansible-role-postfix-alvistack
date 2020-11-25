@@ -1,6 +1,6 @@
 # Ansible Role for Postfix
 
-[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-postfix.svg)](https://travis-ci.com/alvistack/ansible-role-postfix)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-postfix/master)](https://gitlab.com/alvistack/ansible-role-postfix/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-postfix.svg)](https://github.com/alvistack/ansible-role-postfix/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-postfix.svg)](https://github.com/alvistack/ansible-role-postfix/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.postfix-blue.svg)](https://galaxy.ansible.com/alvistack/postfix)
@@ -13,11 +13,11 @@ This role require Ansible 2.10 or higher.
 
 This role was designed for:
 
-  - Ubuntu 18.04/20.04
+  - Ubuntu 18.04/20.04/20.10
   - RHEL/CentOS 7/8
   - openSUSE Leap 15.2
   - Debian 10
-  - Fedora 32
+  - Fedora 33
 
 ## Role Variables
 
