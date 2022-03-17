@@ -15,7 +15,7 @@
 # limitations under the License.
 
 - name: postfix | systemctl restart postfix.service
-  service:
+  ansible.builtin.service:
     name: "postfix.service"
     state: "restarted"
     enabled: true
